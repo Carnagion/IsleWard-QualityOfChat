@@ -4,7 +4,7 @@
 // @version      1.0.0
 // @description  Darkens messages that are likely to be spam.
 // @author       Carnagion
-// @match        play.isleward.com*
+// @match        https://play.isleward.com/
 // @grant        none
 // ==/UserScript==
 

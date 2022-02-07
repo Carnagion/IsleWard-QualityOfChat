@@ -4,7 +4,7 @@
 // @version      1.0.0
 // @description  Highlights messages that mention the player's character name.
 // @author       Carnagion
-// @match        play.isleward.com*
+// @match        https://play.isleward.com/
 // @grant        none
 // ==/UserScript==
 
