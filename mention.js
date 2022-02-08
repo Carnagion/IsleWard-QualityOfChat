@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IsleWard - Quality of Chat (Mentions)
 // @namespace    IsleWard.Addon
-// @version      1.0.0
+// @version      1.0.1
 // @description  Highlights messages that mention the player's character name.
 // @author       Carnagion
 // @match        https://play.isleward.com/
@@ -61,11 +61,11 @@ function addon()
 
                 if (stringContainsMention(entry.message, this.player))
                 {
-                    if (entry.class.includes("color-gray"))
+                    if (entry.class.match(/\bcolor-gray([BCD])\b/gi))
                     {
                         entry.class = "color-grayA";
                     }
-                    else if (entry.class.includes("color-teal"))
+                    else if (entry.class.match(/\bcolor-teal([BCD])\b/gi))
                     {
                         entry.class = "color-tealB";
                     }

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IsleWard - Quality of Chat (Spam)
 // @namespace    IsleWard.Addon
-// @version      1.0.0
+// @version      1.0.1
 // @description  Darkens messages that are likely to be spam.
 // @author       Carnagion
 // @match        https://play.isleward.com/
@@ -42,12 +42,12 @@ function addon()
                 }
 
                 let entry = object.messages[0];
-                if (!entry)
+                if (!entry || !entry.class.match(/\bcolor-gray([BCD])\b/gi))
                 {
                     return;
                 }
 
-                let message = object.messages[0].message;
+                let message = entry.message;
                 if (!message)
                 {
                     return;
