@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IsleWard - Quality of Chat (Spam)
 // @namespace    IsleWard.Addon
-// @version      1.0.1
+// @version      1.1.0
 // @description  Darkens messages that are likely to be spam.
 // @author       Carnagion
 // @match        https://play.isleward.com/

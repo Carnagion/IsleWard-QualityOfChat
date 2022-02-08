@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IsleWard - Quality of Chat (Highlight)
 // @namespace    IsleWard.Addon
-// @version      1.0.0
+// @version      1.1.0
 // @description  Introduces a command for highlighting messages from a specified player to make conversations easier to follow.
 // @author       Carnagion
 // @match        https://play.isleward.com/
