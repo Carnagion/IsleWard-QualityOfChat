@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IsleWard - Quality of Chat (Mentions)
 // @namespace    IsleWard.Addon
-// @version      1.1.0
+// @version      1.1.1
 // @description  Highlights messages that mention the player's character name.
 // @author       Carnagion
 // @match        https://play.isleward.com/

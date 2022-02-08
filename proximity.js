@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IsleWard - Quality of Chat (Proximity)
 // @namespace    IsleWard.Addon
-// @version      1.1.0
+// @version      1.1.1
 // @description  Highlights messages from players in the same zone.
 // @author       Carnagion
 // @match        https://play.isleward.com/

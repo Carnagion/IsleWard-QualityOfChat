@@ -10,18 +10,18 @@ Current version: `1.1.1`
   Messages from players that are in a different zone to the user appear darker than others, allowing the user to focus their attention on players that are closer.
 
 - #### Spam detection  
-  Messages that could potentially be spam appear much darker than others, drawing away focus from them.  
+  Messages that could potentially be spam appear much darker than others, drawing focus away from them.  
   - *Note that while the spam-detection algorithm is fairly good, it is not perfect, so some messages may appear darkened even though they are not spam.*
 
 - #### Name mentions  
-  Messages that contain the user's character's name (either partially or fully) appear brighter. This makes it easier to notice when someone is calling to or stating a conversation with te user.  
+  Messages that contain the user's character's name (either partially or fully) appear brighter. This makes it easier to notice when someone is calling to or starting a conversation with the user.  
   - *Note that this feature may not always be perfect, as it is simply impossible to account for every possible shortened form of a username.*
 
 - #### Message highlighting  
   Introduces the `/c` command. This command allows the user to "flag" specified players.  
-  Messages from flagged players will appear brighter in the chat box. This makes it easier to follow conversations without getting lost in a wall of text.  
+  Messages from flagged players will appear brighter in the chat box, making it easier to follow conversations without getting lost in a wall of text.  
   - `/c` lists the currently flagged players.  
-  - `/c playername` flags the player named `playername` (or un-flag them if they were already flagged).
+  - `/c playername` flags the player named `playername` (or un-flags them if they were already flagged).
 
 Each feature is entirely self-contained in its own `.js` file.  
 Technically, this means that each feature is treated as a separate addon, and can be removed without affecting the others. All one needs to do is remove the relevant `.js` file.
