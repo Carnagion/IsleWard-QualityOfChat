@@ -2,7 +2,7 @@
 // @name         IsleWard - Quality of Chat (Highlight)
 // @namespace    IsleWard.Addon
 // @version      1.1.1
-// @description  Introduces a command for highlighting messages from a specified player to make conversations easier to follow.
+// @description  Introduces a command for highlighting messages from specified players.
 // @author       Carnagion
 // @match        https://play.isleward.com/
 // @grant        none
@@ -80,11 +80,11 @@ function addon()
                     switch (this.trackedPlayers.size)
                     {
                         case 0:
-                            entry.message = "Currently not highlighting messages from any player.";
+                            entry.message = "Not highlighting messages from any player";
                             break;
                         default:
-                            let players = "Currently highlighting messages from: ";
-                            this.trackedPlayers.forEach(player => players += players === "Currently highlighting messages from: " ? player : `, ${player}`);
+                            let players = "Highlighting messages from: ";
+                            this.trackedPlayers.forEach(player => players += players === "Highlighting messages from: " ? player : `, ${player}`);
                             entry.message = players;
                     }
                     entry.class = "color-blueB";
@@ -98,12 +98,12 @@ function addon()
                         if (this.trackedPlayers.has(name))
                         {
                             this.trackedPlayers.delete(name);
-                            entry.message = `Stopped highlighting messages from ${name}.`;
+                            entry.message = `Stopped highlighting messages from ${name}`;
                         }
                         else
                         {
                             this.trackedPlayers.add(name);
-                            entry.message = `Started highlighting messages from ${name}.`;
+                            entry.message = `Started highlighting messages from ${name}`;
                         }
                         entry.class = "color-blueB";
                     }
