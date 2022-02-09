@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IsleWard - Quality of Chat (Highlight)
 // @namespace    IsleWard.Addon
-// @version      1.1.1
+// @version      1.0.1
 // @description  Introduces a command for highlighting messages from specified players.
 // @author       Carnagion
 // @match        https://play.isleward.com/
@@ -89,7 +89,7 @@ function addon()
                     }
                     entry.class = "color-blueB";
                 }
-                else if (this.lastUsedCommand.match(/\/c .+/gi))
+                else if (this.lastUsedCommand.match(/^\/c .+/gi))
                 {
                     let name = this.lastUsedCommand.substring(3);
                     let online = $(".uiOnline").data("ui")?.onlineList;

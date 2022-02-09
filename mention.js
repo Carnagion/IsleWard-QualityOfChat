@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IsleWard - Quality of Chat (Mentions)
 // @namespace    IsleWard.Addon
-// @version      1.0.2
+// @version      1.0.3
 // @description  Makes messages that mention the player's character name appear brighter.
 // @author       Carnagion
 // @match        https://play.isleward.com/
@@ -71,11 +71,11 @@ function addon()
                         continue;
                     }
 
-                    if (entry.class.match(/\bcolor-gray([BCD])\b/gi))
+                    if (entry.class.match(/^color-gray[BCD]$/gi))
                     {
                         entry.class = "color-grayA";
                     }
-                    else if (entry.class.match(/\bcolor-teal([BCD])\b/gi))
+                    else if (entry.class.match(/^color-teal[BCD]$/gi))
                     {
                         entry.class = "color-tealB";
                     }
