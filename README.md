@@ -2,12 +2,12 @@
 
 IsleWard - Quality of Chat adds a few simple quality-of-life features to [IsleWard](https://play.isleward.com)'s chat.
 
-Current version: `1.1.1`
+Current version: `1.1.2`
 
 ## Features
 
 - #### Proximity chat  
-  Messages from players that are in a different zone to the user appear darker than others, allowing the user to focus their attention on players that are closer.
+  Messages from players that are in a different zone to the user appear darker than others. This allows the user to focus their attention on players that are closer.
 
 - #### Spam detection  
   Messages that could potentially be spam appear much darker than others, drawing focus away from them.  
@@ -20,7 +20,7 @@ Current version: `1.1.1`
 - #### Message highlighting  
   Introduces the `/c` command. This command allows the user to "flag" specified players.  
   Messages from flagged players will appear brighter in the chat box, making it easier to follow conversations without getting lost in a wall of text.  
-  - `/c` lists the currently flagged players.  
+  - `/c` lists the currently flagged players.
   - `/c playername` flags the player named `playername` (or un-flags them if they were already flagged).
 
 Each feature is entirely self-contained in its own `.js` file.  
