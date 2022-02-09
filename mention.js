@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IsleWard - Quality of Chat (Mentions)
 // @namespace    IsleWard.Addon
-// @version      1.0.3
+// @version      1.0.4
 // @description  Makes messages that mention the player's character name appear brighter.
 // @author       Carnagion
 // @match        https://play.isleward.com/
@@ -32,10 +32,12 @@ function addon()
         {
             charname: null,
             charnameSplit: null,
+            events: null,
             init: function(events)
             {
-                events.on("onGetPlayer", this.onGetPlayer.bind(this));
-                events.on("onGetMessages", this.onGetMessages.bind(this));
+                this.events = events;
+                this.events.on("onGetPlayer", this.onGetPlayer.bind(this));
+                this.events.on("onGetMessages", this.onGetMessages.bind(this));
             },
             onGetPlayer: function(player)
             {
@@ -66,20 +68,24 @@ function addon()
 
                 for (let part of this.charnameSplit)
                 {
-                    if (!stringContainsMention(entry.message, part))
+                    if (stringContainsMention(entry.message, part))
                     {
-                        continue;
-                    }
-
-                    if (entry.class.match(/^color-gray[BCD]$/gi))
-                    {
-                        entry.class = "color-grayA";
-                    }
-                    else if (entry.class.match(/^color-teal[BCD]$/gi))
-                    {
-                        entry.class = "color-tealB";
+                        this.highlightPlayer(entry);
                     }
                 }
+            },
+            highlightPlayer: function(entry)
+            {
+                if (entry.class.match(/^color-gray[BCD]$/gi))
+                {
+                    entry.class = "color-grayA";
+                }
+                else if (entry.class.match(/^color-teal[CD]$/gi))
+                {
+                    entry.class = "color-tealB";
+                }
+
+                this.events?.emit("onPlaySound", "receiveMail");
             },
         };
     addons.register(content);
