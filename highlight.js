@@ -75,7 +75,7 @@ function addon()
             },
             handleCommand: function(entry)
             {
-                if (this.lastUsedCommand === "/c")
+                if (this.lastUsedCommand.match(/^\/c$/gi))
                 {
                     switch (this.trackedPlayers.size)
                     {
