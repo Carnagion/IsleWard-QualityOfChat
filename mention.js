@@ -71,6 +71,7 @@ function addon()
                     if (stringContainsMention(entry.message, part))
                     {
                         this.highlightPlayer(entry);
+                        break;
                     }
                 }
             },
@@ -96,6 +97,11 @@ function stringContainsMention(message, target)
     for (let index = Math.round((1 / 3) * target.length); index <= target.length; index += 1)
     {
         let match = target.substring(0, index);
+        if (match.length <= 1)
+        {
+            continue;
+        }
+
         let regex = new RegExp(`\\b${match}\\b`, "gi"); // eg. /\bCarnagion\b/gi
         if (message.match(regex))
         {
