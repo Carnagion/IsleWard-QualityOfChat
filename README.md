@@ -2,7 +2,7 @@
 
 IsleWard - Quality of Chat adds a few simple quality-of-life features to [IsleWard](https://play.isleward.com)'s chat.
 
-Current version: `1.1.2`
+Current version: `1.1.3`
 
 ## Features
 
@@ -14,7 +14,7 @@ Current version: `1.1.2`
   - *Note that while the spam-detection algorithm is fairly good, it is not perfect, so some messages may appear darkened even though they are not spam.*
 
 - #### Name mentions  
-  Messages that contain the user's character's name (either partially or fully) appear brighter. This makes it easier to notice when someone is calling to or starting a conversation with the user.  
+  Messages that contain the user's character's name (either partially or fully) appear brighter, and a sound is played. This makes it easier to notice when someone is calling to or starting a conversation with the user.  
   - *Note that this feature may not always be perfect, as it is simply impossible to account for every possible shortened form of a username.*
 
 - #### Message highlighting  
