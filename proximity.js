@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IsleWard - Quality of Chat (Proximity)
 // @namespace    IsleWard.Addon
-// @version      1.0.0
+// @version      1.1.0
 // @description  Makes messages from players in a different zone appear darker.
 // @author       Carnagion
 // @match        https://play.isleward.com/

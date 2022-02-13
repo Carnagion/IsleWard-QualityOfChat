@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IsleWard - Quality of Chat (Mentions)
 // @namespace    IsleWard.Addon
-// @version      1.0.4
+// @version      1.1.0
 // @description  Makes messages that mention the player's character name appear brighter and plays a sound.
 // @author       Carnagion
 // @match        https://play.isleward.com/
