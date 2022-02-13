@@ -30,13 +30,36 @@ function addon()
 {
     let content =
         {
+            enableSpamDetection: true,
             init: function(events)
             {
+                events.on("onGetPlayer", this.onGetPlayer.bind(this));
                 events.on("onGetMessages", this.onGetMessages.bind(this));
+            },
+            onGetPlayer: function()
+            {
+                window.settings.switch("Spam Detection", "Quality of Chat");
+                window.events.on("onSettingsToggleClick", this.onSettingsToggleClick.bind(this));
+            },
+            onSettingsToggleClick: function(name, heading, previous, now)
+            {
+                if (name !== "Spam Detection" && heading !== "Quality of Chat")
+                {
+                    return;
+                }
+                switch (now)
+                {
+                    case "On":
+                        this.enableSpamDetection = true;
+                        break;
+                    case "Off":
+                        this.enableSpamDetection = false;
+                        break;
+                }
             },
             onGetMessages: function(object)
             {
-                if (!object.messages)
+                if (!this.enableSpamDetection || !object.messages)
                 {
                     return;
                 }

@@ -31,6 +31,7 @@ function addon()
     let content =
         {
             player: null,
+            enableProximityChat: true,
             init: function(events)
             {
                 events.on("onGetPlayer", this.onGetPlayer.bind(this));
@@ -39,10 +40,29 @@ function addon()
             onGetPlayer: function(player)
             {
                 this.player = player?.auth?.charname;
+
+                window.settings.switch("Proximity Chat", "Quality of Chat");
+                window.events.on("onSettingsToggleClick", this.onSettingsToggleClick.bind(this));
+            },
+            onSettingsToggleClick: function(name, heading, previous, now)
+            {
+                if (name !== "Proximity Chat" && heading !== "Quality of Chat")
+                {
+                    return;
+                }
+                switch (now)
+                {
+                    case "On":
+                        this.enableProximityChat = true;
+                        break;
+                    case "Off":
+                        this.enableProximityChat = false;
+                        break;
+                }
             },
             onGetMessages: function(object)
             {
-                if (!this.player || !object.messages)
+                if (!this.enableProximityChat || !this.player || !object.messages)
                 {
                     return;
                 }

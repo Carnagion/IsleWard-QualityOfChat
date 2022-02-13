@@ -33,6 +33,7 @@ function addon()
             charname: null,
             charnameSplit: null,
             events: null,
+            mentionMode: "Audiovisual",
             init: function(events)
             {
                 this.events = events;
@@ -46,10 +47,20 @@ function addon()
                 {
                     this.charnameSplit = splitByPascalCase(this.charname).split(" ");
                 }
+
+                window.settings.toggle("Mentions", ["Audiovisual", "Audio", "Visual", "Off"], "Quality of Chat");
+                window.events.on("onSettingsToggleClick", this.onSettingsToggleClick.bind(this));
+            },
+            onSettingsToggleClick: function(name, heading, previous, now)
+            {
+                if (name === "Mentions" && heading === "Quality of Chat")
+                {
+                    this.mentionMode = now;
+                }
             },
             onGetMessages: function(object)
             {
-                if (!this.charnameSplit || !object.messages)
+                if (this.mentionMode === "Off" || !this.charnameSplit || !object.messages)
                 {
                     return;
                 }
@@ -77,16 +88,23 @@ function addon()
             },
             highlightPlayer: function(entry)
             {
-                if (entry.class.match(/^color-gray[BCD]$/gi))
+                let mode = this.mentionMode.toUpperCase();
+                if (mode.includes("visual"))
                 {
-                    entry.class = "color-grayA";
-                }
-                else if (entry.class.match(/^color-teal[CD]$/gi))
-                {
-                    entry.class = "color-tealB";
+                    if (entry.class.match(/^color-gray[BCD]$/gi))
+                    {
+                        entry.class = "color-grayA";
+                    }
+                    else if (entry.class.match(/^color-teal[CD]$/gi))
+                    {
+                        entry.class = "color-tealB";
+                    }
                 }
 
-                this.events?.emit("onPlaySound", "receiveMail");
+                if (mode.includes("audio"))
+                {
+                    this.events?.emit("onPlaySound", "receiveMail");
+                }
             },
         };
     addons.register(content);
