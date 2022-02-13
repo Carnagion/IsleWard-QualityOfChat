@@ -8,9 +8,9 @@
 // @grant        none
 // ==/UserScript==
 
-defer(addon);
+defer(addon, 50);
 
-function defer(method)
+function defer(method, interval)
 {
     if (window.jQuery)
     {
@@ -22,7 +22,7 @@ function defer(method)
         {
             defer(method);
         }
-        setTimeout(handler, 50);
+        setTimeout(handler, interval);
     }
 }
 
