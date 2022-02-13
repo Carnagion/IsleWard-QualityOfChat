@@ -48,8 +48,8 @@ function addon()
                     this.charnameSplit = splitByPascalCase(this.charname).split(" ");
                 }
 
-                window.settings.toggle("Mentions", ["Audiovisual", "Audio", "Visual", "Off"], "Quality of Chat");
-                window.events.on("onSettingsToggleClick", this.onSettingsToggleClick.bind(this));
+                window.settings?.toggle("Mentions", ["Audiovisual", "Audio", "Visual", "Off"], "Quality of Chat");
+                window.events?.on("onSettingsToggleClick", this.onSettingsToggleClick.bind(this));
             },
             onSettingsToggleClick: function(name, heading, previous, now)
             {

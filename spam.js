@@ -38,8 +38,8 @@ function addon()
             },
             onGetPlayer: function()
             {
-                window.settings.switch("Spam Detection", "Quality of Chat");
-                window.events.on("onSettingsToggleClick", this.onSettingsToggleClick.bind(this));
+                window.settings?.switch("Spam Detection", "Quality of Chat");
+                window.events?.on("onSettingsToggleClick", this.onSettingsToggleClick.bind(this));
             },
             onSettingsToggleClick: function(name, heading, previous, now)
             {

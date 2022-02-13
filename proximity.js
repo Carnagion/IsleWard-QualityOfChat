@@ -41,8 +41,8 @@ function addon()
             {
                 this.player = player?.auth?.charname;
 
-                window.settings.switch("Proximity Chat", "Quality of Chat");
-                window.events.on("onSettingsToggleClick", this.onSettingsToggleClick.bind(this));
+                window.settings?.switch("Proximity Chat", "Quality of Chat");
+                window.events?.on("onSettingsToggleClick", this.onSettingsToggleClick.bind(this));
             },
             onSettingsToggleClick: function(name, heading, previous, now)
             {
