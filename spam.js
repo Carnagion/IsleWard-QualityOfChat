@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IsleWard - Quality of Chat (Spam)
 // @namespace    IsleWard.Addon
-// @version      1.1.1
+// @version      1.1.2
 // @description  Makes messages that are likely to be spam appear darker.
 // @author       Carnagion
 // @match        https://play.isleward.com/
@@ -33,10 +33,10 @@ function addon()
             enableSpamDetection: true,
             init: function(events)
             {
-                events.on("onGetPlayer", this.onGetPlayer.bind(this));
                 events.on("onGetMessages", this.onGetMessages.bind(this));
+                events.on("onOpenOptions", this.onOpenOptions.bind(this));
             },
-            onGetPlayer: function()
+            onOpenOptions: function()
             {
                 window.settings?.switch("Spam Detection", "Quality of Chat");
                 window.events?.on("onSettingsToggleClick", this.onSettingsToggleClick.bind(this));

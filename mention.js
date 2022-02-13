@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IsleWard - Quality of Chat (Mentions)
 // @namespace    IsleWard.Addon
-// @version      1.1.1
+// @version      1.1.2
 // @description  Makes messages that mention the player's character name appear brighter and plays a sound.
 // @author       Carnagion
 // @match        https://play.isleward.com/
@@ -39,6 +39,7 @@ function addon()
                 this.events = events;
                 this.events.on("onGetPlayer", this.onGetPlayer.bind(this));
                 this.events.on("onGetMessages", this.onGetMessages.bind(this));
+                this.events.on("onOpenOptions", this.onOpenOptions.bind(this));
             },
             onGetPlayer: function(player)
             {
@@ -47,7 +48,9 @@ function addon()
                 {
                     this.charnameSplit = splitByPascalCase(this.charname).split(" ");
                 }
-
+            },
+            onOpenOptions: function()
+            {
                 window.settings?.toggle("Mentions", ["Audiovisual", "Audio", "Visual", "Off"], "Quality of Chat");
                 window.events?.on("onSettingsToggleClick", this.onSettingsToggleClick.bind(this));
             },
@@ -88,7 +91,7 @@ function addon()
             },
             highlightPlayer: function(entry)
             {
-                let mode = this.mentionMode.toUpperCase();
+                let mode = this.mentionMode.toLowerCase();
                 if (mode.includes("visual"))
                 {
                     if (entry.class.match(/^color-gray[BCD]$/gi))
