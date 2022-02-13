@@ -72,6 +72,10 @@ function addon()
                 };
                 loginFilter[0].addEventListener("click", loginFilterClick);
 
+                let messager = chat.data("ui");
+                loginFilter.on("mouseover", messager.onFilterHover.bind(messager, true));
+                loginFilter.on("mouseleave", messager.onFilterHover.bind(messager, false));
+
                 let childAdded = function(mutations)
                 {
                     for (let mutation of mutations)
