@@ -41,6 +41,9 @@ The installation procedure is different, depending on whether one is playing usi
 
 ## FAQs
 
+- #### I don't see the settings in the options menu!
+  The settings require [Addon Settings Framework](https://github.com/Carnagion/IsleWard-AddonSettingsFramework) to be loaded. This isn't a hard dependency, so it is possible to use the addon as normal without it, but settings will not appear.
+
 - #### I don't like some features. How do I remove/disable them?  
   Some features can be disabled or configured in IsleWard's options menu.  
   Alternatively, remove the relevant `.js` file (from the addons directory if using the client, or from the ViolentMonkey script list if using a browser).
