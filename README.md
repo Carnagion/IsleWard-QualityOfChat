@@ -2,7 +2,7 @@
 
 IsleWard - Quality of Chat adds a few simple quality-of-life features to [IsleWard](https://play.isleward.com)'s chat.
 
-Current version: `1.1.3`
+Current version: `1.2.1`
 
 ## Features
 
