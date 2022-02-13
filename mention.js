@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IsleWard - Quality of Chat (Mentions)
 // @namespace    IsleWard.Addon
-// @version      1.1.2
+// @version      1.1.3
 // @description  Makes messages that mention the player's character name appear brighter and plays a sound.
 // @author       Carnagion
 // @match        https://play.isleward.com/
@@ -20,7 +20,7 @@ function defer(method, interval)
     {
         let handler = function()
         {
-            defer(method);
+            defer(method, interval);
         }
         setTimeout(handler, interval);
     }

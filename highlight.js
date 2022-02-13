@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IsleWard - Quality of Chat (Highlight)
 // @namespace    IsleWard.Addon
-// @version      1.0.3
+// @version      1.0.4
 // @description  Introduces a command for highlighting messages from specified players.
 // @author       Carnagion
 // @match        https://play.isleward.com/
@@ -20,7 +20,7 @@ function defer(method, interval)
     {
         let handler = function()
         {
-            defer(method);
+            defer(method, interval);
         }
         setTimeout(handler, interval);
     }

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IsleWard - Quality of Chat (Spam)
 // @namespace    IsleWard.Addon
-// @version      1.1.2
+// @version      1.1.3
 // @description  Makes messages that are likely to be spam appear darker.
 // @author       Carnagion
 // @match        https://play.isleward.com/
@@ -20,7 +20,7 @@ function defer(method, interval)
     {
         let handler = function()
         {
-            defer(method);
+            defer(method, interval);
         }
         setTimeout(handler, interval);
     }
