@@ -23,6 +23,10 @@ Current version: `1.1.3`
   - `/c` lists the currently flagged players.
   - `/c playername` flags the player named `playername` (or un-flags them if they were already flagged).
 
+- #### Login message filter
+  Login/logout messages can be hidden or shown by clicking the logins filter in the chat box.
+  - *Note that a different filter must first be double-clicked, and only then can the logins filter be clicked. This is a bug that cannot be fixed.*
+
 Each feature is entirely self-contained in its own `.js` file.  
 Technically, this means that each feature is treated as a separate addon, and can be removed without affecting the others. All one needs to do is remove the relevant `.js` file.
 
@@ -38,7 +42,8 @@ The installation procedure is different, depending on whether one is playing usi
 ## FAQs
 
 - #### I don't like some features. How do I remove/disable them?  
-  Simply remove the relevant `.js` file (from the addons directory if using the client, or from the ViolentMonkey script list if using a browser).
+  Some features can be disabled or configured in IsleWard's options menu.  
+  Alternatively, remove the relevant `.js` file (from the addons directory if using the client, or from the ViolentMonkey script list if using a browser).
 
 - #### Will this affect other players?  
   No, this is an entirely client-side addon. Only the user will be able to see the changes made.
