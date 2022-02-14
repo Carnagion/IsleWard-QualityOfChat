@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IsleWard - Quality of Chat (Proximity)
 // @namespace    IsleWard.Addon
-// @version      1.1.3
+// @version      1.1.4
 // @description  Makes messages from players in a different zone appear darker.
 // @author       Carnagion
 // @match        https://play.isleward.com/
@@ -36,16 +36,17 @@ function addon()
             {
                 events.on("onGetPlayer", this.onGetPlayer.bind(this));
                 events.on("onGetMessages", this.onGetMessages.bind(this));
-                events.on("onOpenOptions", this.onOpenOptions.bind(this));
+                events.on("onSettingsToggleClick", this.onSettingsToggleClick.bind(this));
             },
             onGetPlayer: function(player)
             {
                 this.player = player?.auth?.charname;
-            },
-            onOpenOptions: function()
-            {
+                if ($(".ui-container .uiOptions .bottom .list").length === 0)
+                {
+                    retry(() => this.onGetPlayer.bind(this, player), () => $(".ui-container .uiOptions .bottom .list").length !== 0, 100);
+                    return;
+                }
                 window.settings?.switch("Proximity Chat", "Quality of Chat");
-                window.events?.on("onSettingsToggleClick", this.onSettingsToggleClick.bind(this));
             },
             onSettingsToggleClick: function(name, heading, previous, now)
             {

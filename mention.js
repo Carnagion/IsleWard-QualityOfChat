@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IsleWard - Quality of Chat (Mentions)
 // @namespace    IsleWard.Addon
-// @version      1.1.3
+// @version      1.1.4
 // @description  Makes messages that mention the player's character name appear brighter and plays a sound.
 // @author       Carnagion
 // @match        https://play.isleward.com/
@@ -32,27 +32,27 @@ function addon()
         {
             charname: null,
             charnameSplit: null,
-            events: null,
             mentionMode: "Audiovisual",
             init: function(events)
             {
-                this.events = events;
-                this.events.on("onGetPlayer", this.onGetPlayer.bind(this));
-                this.events.on("onGetMessages", this.onGetMessages.bind(this));
-                this.events.on("onOpenOptions", this.onOpenOptions.bind(this));
+                events.on("onGetPlayer", this.onGetPlayer.bind(this));
+                events.on("onGetMessages", this.onGetMessages.bind(this));
+                events.on("onSettingsToggleClick", this.onSettingsToggleClick.bind(this));
             },
             onGetPlayer: function(player)
             {
+                if ($(".ui-container .uiOptions .bottom .list").length === 0)
+                {
+                    retry(() => this.onGetPlayer.bind(this, player), () => $(".ui-container .uiOptions .bottom .list").length !== 0, 100);
+                    return;
+                }
+                window.settings?.toggle("Mentions", ["Audiovisual", "Audio", "Visual", "Off"], "Quality of Chat");
+
                 this.charname = player?.auth?.charname;
                 if (this.charname)
                 {
                     this.charnameSplit = splitByPascalCase(this.charname).split(" ");
                 }
-            },
-            onOpenOptions: function()
-            {
-                window.settings?.toggle("Mentions", ["Audiovisual", "Audio", "Visual", "Off"], "Quality of Chat");
-                window.events?.on("onSettingsToggleClick", this.onSettingsToggleClick.bind(this));
             },
             onSettingsToggleClick: function(name, heading, previous, now)
             {
@@ -106,7 +106,7 @@ function addon()
 
                 if (mode.includes("audio"))
                 {
-                    this.events?.emit("onPlaySound", "receiveMail");
+                    window.addons.events?.emit("onPlaySound", "receiveMail");
                 }
             },
         };
