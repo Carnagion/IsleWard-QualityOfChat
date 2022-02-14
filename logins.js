@@ -1,18 +1,18 @@
 // ==UserScript==
 // @name         IsleWard - Quality of Chat (Logins)
 // @namespace    IsleWard.Addon
-// @version      1.0.2
+// @version      1.0.3
 // @description  Introduces a chat filter to hide login/logout messages.
 // @author       Carnagion
 // @match        https://play.isleward.com/
 // @grant        none
 // ==/UserScript==
 
-defer(addon, 50);
+retry(addon, () => window.jQuery, 50);
 
-function defer(method, interval)
+function retry(method, condition, interval)
 {
-    if (window.jQuery)
+    if (condition())
     {
         method();
     }
@@ -20,7 +20,7 @@ function defer(method, interval)
     {
         let handler = function()
         {
-            defer(method, interval);
+            retry(method, condition, interval);
         }
         setTimeout(handler, interval);
     }
@@ -39,6 +39,13 @@ function addon()
                 let chat = $(".uiMessages");
                 if (chat.find(".filters [filter='logins']").length !== 0)
                 {
+                    return;
+                }
+
+                let messager = chat.data("ui");
+                if (!messager)
+                {
+                    retry(this.onGetPlayer.bind(this), () => $(".uiMessages").data("ui"), 100);
                     return;
                 }
 
@@ -72,7 +79,6 @@ function addon()
                 };
                 loginFilter[0].addEventListener("click", loginFilterClick);
 
-                let messager = chat.data("ui");
                 loginFilter.on("mouseover", messager.onFilterHover.bind(messager, true));
                 loginFilter.on("mouseleave", messager.onFilterHover.bind(messager, false));
 
