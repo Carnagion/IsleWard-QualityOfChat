@@ -2,7 +2,7 @@
 
 IsleWard - Quality of Chat adds a few simple quality-of-life features to [IsleWard](https://play.isleward.com)'s chat.
 
-Current version: `1.2.2`
+Current version: `1.2.3`
 
 ## Features
 
@@ -25,7 +25,6 @@ Current version: `1.2.2`
 
 - #### Login message filter
   Login/logout messages can be hidden or shown by clicking the logins filter in the chat box.
-  - *Note that a different filter must first be double-clicked, and only then can the logins filter be clicked. This is a bug that cannot be fixed.*
 
 Each feature is entirely self-contained in its own `.js` file.  
 Technically, this means that each feature is treated as a separate addon, and can be removed without affecting the others. All one needs to do is remove the relevant `.js` file.
